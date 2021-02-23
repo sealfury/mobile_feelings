@@ -78,20 +78,32 @@
 <LoginScreenSuccess>:
     GridLayout:
         cols: 1
-        Button:
-            text: "Logout"
-            on_press: root.log_out()
+        padding: 30, 30
+        spacing: 30, 30
+        RelativeLayout:
+            ImageButton:
+                on_press: root.log_out()
+                source: 'logout_hover.png' if self.hovered else 'logout_nothover.png'
+                size_hint: 0.4, 0.4
+                pos_hint: {'center_x': 0.93, 'center_y': 0.8}            
         Label:
             id: feeling
+            padding: 8, 8
+            text_size: (self.width * 0.8), (self.height * 0.8)
             text: "How are you feeling?"
         TextInput:
+            padding: 8, 8
             hint_text: "Happy? Sad? Unloved...?"
         Button:
             text: "Enlighten me"
             on_press: root.get_quote(root.ids.feeling.text)
-        Label:
-            id: quote
-            text: ""
+        ScrollView:
+            Label:
+                id: quote
+                text: ""
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
 
 <RootWidget>:
     LoginScreen:
