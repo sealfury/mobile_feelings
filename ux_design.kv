@@ -56,12 +56,15 @@
             text: "Logout"
             on_press: root.log_out()
         Label:
+            id: feeling
             text: "How are you feeling?"
         TextInput:
             hint_text: "Happy? Sad? Unloved...?"
         Button:
             text: "Enlighten me"
+            on_press: root.get_quote(root.ids.feeling.text)
         Label:
+            id: quote
             text: ""
 
 <RootWidget>:
